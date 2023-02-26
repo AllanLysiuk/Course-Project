@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19206" systemVersion="20G817" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Wine" representedClassName="Wine" syncable="YES">
+        <attribute name="averageRating" optional="YES" attributeType="Float" defaultValueString="0" usesScalarValueType="YES" customClassName="Rating"/>
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="image" optional="YES" attributeType="URI"/>
+        <attribute name="isFavorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isSaved" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="location" optional="YES" attributeType="String"/>
+        <attribute name="reviews" optional="YES" attributeType="String"/>
+        <attribute name="typeOfWine" optional="YES" attributeType="String"/>
+        <attribute name="wine" optional="YES" attributeType="String"/>
+        <attribute name="winery" optional="YES" attributeType="String"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="wine"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <elements>
+        <element name="Wine" positionX="-63" positionY="-18" width="128" height="179"/>
+    </elements>
+</model>
