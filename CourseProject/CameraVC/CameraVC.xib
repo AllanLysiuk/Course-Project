@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CameraVC" customModule="CourseProject" customModuleProvider="target">
             <connections>
+                <outlet property="imageView" destination="IaY-PA-5Ow" id="OeA-p1-2o9"/>
                 <outlet property="view" destination="iN0-l3-epB" id="tDe-gH-imU"/>
             </connections>
         </placeholder>
@@ -17,9 +18,57 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DHC-Ln-EmI">
+                    <rect key="frame" x="142.5" y="474.5" width="129" height="36"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Open Camera"/>
+                    <connections>
+                        <action selector="openCameraDidTap" destination="-1" eventType="touchUpInside" id="beK-wS-3Dj"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Dv-5g-jRe">
+                    <rect key="frame" x="116" y="518.5" width="182" height="36"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Open Photo Library"/>
+                    <connections>
+                        <action selector="openLibraryDidTap" destination="-1" eventType="touchUpInside" id="5Ig-cG-EYt"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vpj-0m-Oed">
+                    <rect key="frame" x="230.5" y="44" width="163.5" height="34.5"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="filled" title="Get info by photo">
+                        <fontDescription key="titleFontDescription" type="boldSystem" pointSize="17"/>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="getInfoDidTap" destination="-1" eventType="touchUpInside" id="01f-TI-WLD"/>
+                    </connections>
+                </button>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IaY-PA-5Ow">
+                    <rect key="frame" x="45" y="86.5" width="324" height="380"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="324" id="CJV-t0-Tje"/>
+                        <constraint firstAttribute="width" secondItem="IaY-PA-5Ow" secondAttribute="height" multiplier="81:95" id="DbN-qa-Y2G"/>
+                        <constraint firstAttribute="height" constant="380" id="Hud-yl-de4"/>
+                    </constraints>
+                </imageView>
+            </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-            <point key="canvasLocation" x="139" y="62"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Vpj-0m-Oed" secondAttribute="trailing" constant="20" id="1aB-aN-OP0"/>
+                <constraint firstItem="DHC-Ln-EmI" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="66n-z5-ytd"/>
+                <constraint firstItem="8Dv-5g-jRe" firstAttribute="top" secondItem="DHC-Ln-EmI" secondAttribute="bottom" constant="8" id="C7A-Xg-LRc"/>
+                <constraint firstItem="IaY-PA-5Ow" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ECH-6S-o1X"/>
+                <constraint firstItem="Vpj-0m-Oed" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="PR2-pT-p1w"/>
+                <constraint firstItem="IaY-PA-5Ow" firstAttribute="top" secondItem="Vpj-0m-Oed" secondAttribute="bottom" constant="8" id="WT3-Wp-fEC"/>
+                <constraint firstItem="DHC-Ln-EmI" firstAttribute="top" secondItem="IaY-PA-5Ow" secondAttribute="bottom" constant="8" id="hip-eb-OGC"/>
+                <constraint firstItem="8Dv-5g-jRe" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="pNJ-0G-qE1"/>
+            </constraints>
+            <point key="canvasLocation" x="137.68115942028987" y="61.607142857142854"/>
         </view>
     </objects>
     <resources>
