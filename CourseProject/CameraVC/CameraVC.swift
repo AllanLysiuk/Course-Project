@@ -19,6 +19,9 @@ final class CameraVC: UIViewController, UIImagePickerControllerDelegate & UINavi
         imageView.image = UIImage(named: "emptyBottleOfWine")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = true
+    }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true)
@@ -33,10 +36,11 @@ final class CameraVC: UIViewController, UIImagePickerControllerDelegate & UINavi
     
     @IBAction func getInfoDidTap() {
         
-        if imageView.image == UIImage(named: "emptyBottleOfWine") {
-            print("bad")
+        if imageView.image != UIImage(named: "emptyBottleOfWine") {
+            let wineInfoVC = WineInfoVC(nibName: "\(WineInfoVC.self)", bundle: nil)
+            self.navigationController?.pushViewController(wineInfoVC, animated: true)
         } else {
-            print("Good")
+           
         }
     }
     

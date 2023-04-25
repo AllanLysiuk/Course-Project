@@ -12,6 +12,8 @@
 		9D3476F1299D4C7400BC1E01 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3476F0299D4C7400BC1E01 /* Enums.swift */; };
 		9D3476F3299D4D1D00BC1E01 /* ButtonSaveProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3476F2299D4D1D00BC1E01 /* ButtonSaveProtocol.swift */; };
 		9D3476F5299D4D4D00BC1E01 /* EditProfileGeneralVCProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3476F4299D4D4D00BC1E01 /* EditProfileGeneralVCProtocol.swift */; };
+		9D6880F529F7C790000ED2A2 /* WineInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6880F429F7C790000ED2A2 /* WineInfoVC.swift */; };
+		9D6880F729F7C79D000ED2A2 /* WineInfoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D6880F629F7C79D000ED2A2 /* WineInfoVC.xib */; };
 		9D6EBF1029967C3A00872649 /* NavControllerSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6EBF0F29967C3A00872649 /* NavControllerSearchVC.swift */; };
 		9D6FE0E8297D363400A280C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6FE0E7297D363400A280C5 /* AppDelegate.swift */; };
 		9D6FE0EA297D363400A280C5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6FE0E9297D363400A280C5 /* SceneDelegate.swift */; };
@@ -60,6 +62,8 @@
 		9D3476F0299D4C7400BC1E01 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		9D3476F2299D4D1D00BC1E01 /* ButtonSaveProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSaveProtocol.swift; sourceTree = "<group>"; };
 		9D3476F4299D4D4D00BC1E01 /* EditProfileGeneralVCProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileGeneralVCProtocol.swift; sourceTree = "<group>"; };
+		9D6880F429F7C790000ED2A2 /* WineInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineInfoVC.swift; sourceTree = "<group>"; };
+		9D6880F629F7C79D000ED2A2 /* WineInfoVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WineInfoVC.xib; sourceTree = "<group>"; };
 		9D6EBF0F29967C3A00872649 /* NavControllerSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavControllerSearchVC.swift; sourceTree = "<group>"; };
 		9D6FE0E4297D363400A280C5 /* CourseProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CourseProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D6FE0E7297D363400A280C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -120,7 +124,6 @@
 				983A39309BE8B959649F1490 /* Pods-CourseProject.debug.xcconfig */,
 				FDEA775D5084EA2CB0722333 /* Pods-CourseProject.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -139,6 +142,15 @@
 				9D3476F0299D4C7400BC1E01 /* Enums.swift */,
 			);
 			path = Enums;
+			sourceTree = "<group>";
+		};
+		9D6880F329F7C771000ED2A2 /* WineInfoVC */ = {
+			isa = PBXGroup;
+			children = (
+				9D6880F429F7C790000ED2A2 /* WineInfoVC.swift */,
+				9D6880F629F7C79D000ED2A2 /* WineInfoVC.xib */,
+			);
+			path = WineInfoVC;
 			sourceTree = "<group>";
 		};
 		9D6FE0DB297D363400A280C5 = {
@@ -174,6 +186,7 @@
 				9D6FE0FB297D39A000A280C5 /* ProfileVC */,
 				9D6FE10D297D551500A280C5 /* SearchVC */,
 				9D6FE10F297D557000A280C5 /* CameraVC */,
+				9D6880F329F7C771000ED2A2 /* WineInfoVC */,
 				9D6FE0F0297D363700A280C5 /* Assets.xcassets */,
 				9D6FE0F5297D363700A280C5 /* Info.plist */,
 				9D92F7CE2984398E00E5BDA9 /* Wines.xcdatamodeld */,
@@ -370,6 +383,7 @@
 				9D3476EE299D492C00BC1E01 /* SavedWinesVC.xib in Resources */,
 				9D6FE108297D4C5C00A280C5 /* ProfileSettingsVC.xib in Resources */,
 				9D92F7E42985B7AE00E5BDA9 /* WineTypeSearchVC.xib in Resources */,
+				9D6880F729F7C79D000ED2A2 /* WineInfoVC.xib in Resources */,
 				9D6FE115297D5F1700A280C5 /* SearchVC.xib in Resources */,
 				9D92F7DF29859BB800E5BDA9 /* TypeCollectionViewCell.xib in Resources */,
 				9D6FE103297D462700A280C5 /* ProfileTableViewCell.xib in Resources */,
@@ -452,6 +466,7 @@
 				9D6FE111297D58A100A280C5 /* SearchVC.swift in Sources */,
 				9D6FE113297D58B100A280C5 /* CameraVC.swift in Sources */,
 				9D6FE101297D3A4F00A280C5 /* ProfileGeneralVC.swift in Sources */,
+				9D6880F529F7C790000ED2A2 /* WineInfoVC.swift in Sources */,
 				9D88F917299273E300F3AACC /* SortingService.swift in Sources */,
 				9D6FE0E8297D363400A280C5 /* AppDelegate.swift in Sources */,
 				9D92F7C72982F8FB00E5BDA9 /* ProfileModel.swift in Sources */,

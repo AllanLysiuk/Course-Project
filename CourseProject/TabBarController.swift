@@ -21,7 +21,7 @@ final class TabBarController: UITabBarController{
         super.viewDidLoad()
         let searchNVC = NavControllerSearchVC()
         searchNVC.navigationBar.isHidden = true
-        let cameraVC = CameraVC()
+        let cameraVC = UINavigationController(rootViewController: CameraVC())
         let profileVC = ProfileGeneralVC()
         let profileNavVC = UINavigationController(rootViewController: profileVC)
         self.setViewControllers([searchNVC,cameraVC,profileNavVC], animated: false)
