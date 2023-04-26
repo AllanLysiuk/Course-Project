@@ -14,6 +14,10 @@
 		9D3476F5299D4D4D00BC1E01 /* EditProfileGeneralVCProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D3476F4299D4D4D00BC1E01 /* EditProfileGeneralVCProtocol.swift */; };
 		9D6880F529F7C790000ED2A2 /* WineInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6880F429F7C790000ED2A2 /* WineInfoVC.swift */; };
 		9D6880F729F7C79D000ED2A2 /* WineInfoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D6880F629F7C79D000ED2A2 /* WineInfoVC.xib */; };
+		9D6880F929F7CEAE000ED2A2 /* MLKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6880F829F7CEAE000ED2A2 /* MLKitService.swift */; };
+		9D6880FB29F7DA08000ED2A2 /* UIUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6880FA29F7DA08000ED2A2 /* UIUtilities.swift */; };
+		9D6880FD29F9A8EB000ED2A2 /* GKImages in Resources */ = {isa = PBXBuildFile; fileRef = 9D6880FC29F9A8EA000ED2A2 /* GKImages */; };
+		9D6880FF29F9A8FE000ED2A2 /* GKClasses in Resources */ = {isa = PBXBuildFile; fileRef = 9D6880FE29F9A8FE000ED2A2 /* GKClasses */; };
 		9D6EBF1029967C3A00872649 /* NavControllerSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6EBF0F29967C3A00872649 /* NavControllerSearchVC.swift */; };
 		9D6FE0E8297D363400A280C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6FE0E7297D363400A280C5 /* AppDelegate.swift */; };
 		9D6FE0EA297D363400A280C5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6FE0E9297D363400A280C5 /* SceneDelegate.swift */; };
@@ -64,6 +68,10 @@
 		9D3476F4299D4D4D00BC1E01 /* EditProfileGeneralVCProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileGeneralVCProtocol.swift; sourceTree = "<group>"; };
 		9D6880F429F7C790000ED2A2 /* WineInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineInfoVC.swift; sourceTree = "<group>"; };
 		9D6880F629F7C79D000ED2A2 /* WineInfoVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WineInfoVC.xib; sourceTree = "<group>"; };
+		9D6880F829F7CEAE000ED2A2 /* MLKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLKitService.swift; sourceTree = "<group>"; };
+		9D6880FA29F7DA08000ED2A2 /* UIUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIUtilities.swift; sourceTree = "<group>"; };
+		9D6880FC29F9A8EA000ED2A2 /* GKImages */ = {isa = PBXFileReference; lastKnownFileType = folder; path = GKImages; sourceTree = "<group>"; };
+		9D6880FE29F9A8FE000ED2A2 /* GKClasses */ = {isa = PBXFileReference; lastKnownFileType = folder; path = GKClasses; sourceTree = "<group>"; };
 		9D6EBF0F29967C3A00872649 /* NavControllerSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavControllerSearchVC.swift; sourceTree = "<group>"; };
 		9D6FE0E4297D363400A280C5 /* CourseProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CourseProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D6FE0E7297D363400A280C5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -187,6 +195,8 @@
 				9D6FE10D297D551500A280C5 /* SearchVC */,
 				9D6FE10F297D557000A280C5 /* CameraVC */,
 				9D6880F329F7C771000ED2A2 /* WineInfoVC */,
+				9D6880FC29F9A8EA000ED2A2 /* GKImages */,
+				9D6880FE29F9A8FE000ED2A2 /* GKClasses */,
 				9D6FE0F0297D363700A280C5 /* Assets.xcassets */,
 				9D6FE0F5297D363700A280C5 /* Info.plist */,
 				9D92F7CE2984398E00E5BDA9 /* Wines.xcdatamodeld */,
@@ -285,6 +295,8 @@
 				9D88F916299273E300F3AACC /* SortingService.swift */,
 				9D92F7C82982FA8B00E5BDA9 /* ProfileService.swift */,
 				9D8A81F829942C1A00B32E6A /* ImageService.swift */,
+				9D6880F829F7CEAE000ED2A2 /* MLKitService.swift */,
+				9D6880FA29F7DA08000ED2A2 /* UIUtilities.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -387,6 +399,8 @@
 				9D6FE115297D5F1700A280C5 /* SearchVC.xib in Resources */,
 				9D92F7DF29859BB800E5BDA9 /* TypeCollectionViewCell.xib in Resources */,
 				9D6FE103297D462700A280C5 /* ProfileTableViewCell.xib in Resources */,
+				9D6880FF29F9A8FE000ED2A2 /* GKClasses in Resources */,
+				9D6880FD29F9A8EB000ED2A2 /* GKImages in Resources */,
 				9D6FE0FD297D3A0D00A280C5 /* ProfileGeneralVC.xib in Resources */,
 				9D8A81F22994219900B32E6A /* SearchBarVC.xib in Resources */,
 				9DC4CD962987E3DF00C0345A /* SearchBarVCCell.xib in Resources */,
@@ -467,6 +481,7 @@
 				9D6FE113297D58B100A280C5 /* CameraVC.swift in Sources */,
 				9D6FE101297D3A4F00A280C5 /* ProfileGeneralVC.swift in Sources */,
 				9D6880F529F7C790000ED2A2 /* WineInfoVC.swift in Sources */,
+				9D6880FB29F7DA08000ED2A2 /* UIUtilities.swift in Sources */,
 				9D88F917299273E300F3AACC /* SortingService.swift in Sources */,
 				9D6FE0E8297D363400A280C5 /* AppDelegate.swift in Sources */,
 				9D92F7C72982F8FB00E5BDA9 /* ProfileModel.swift in Sources */,
@@ -477,6 +492,7 @@
 				9D6EBF1029967C3A00872649 /* NavControllerSearchVC.swift in Sources */,
 				9D6FE10C297D545800A280C5 /* TabBarController.swift in Sources */,
 				9D92F7DA298463B100E5BDA9 /* Wine+CoreDataClass.swift in Sources */,
+				9D6880F929F7CEAE000ED2A2 /* MLKitService.swift in Sources */,
 				9D92F7CD2984366400E5BDA9 /* WineElement.swift in Sources */,
 				9D6FE0EA297D363400A280C5 /* SceneDelegate.swift in Sources */,
 				9D8A81EC2994126600B32E6A /* SearchBarVC.swift in Sources */,

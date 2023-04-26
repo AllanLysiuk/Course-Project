@@ -6,6 +6,7 @@
 //
 
 import UIKit
+//import "GKImagePicker.h"
 
 final class CameraVC: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate{
     @IBOutlet private weak var imageView: UIImageView!
@@ -15,8 +16,11 @@ final class CameraVC: UIViewController, UIImagePickerControllerDelegate & UINavi
     override func viewDidLoad() {
         super.viewDidLoad()
         vc.delegate = self
-        vc.allowsEditing = true
+        vc.allowsEditing = false
         imageView.image = UIImage(named: "emptyBottleOfWine")
+//        vc.resizeableCropArea = YES
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,6 +42,7 @@ final class CameraVC: UIViewController, UIImagePickerControllerDelegate & UINavi
         
         if imageView.image != UIImage(named: "emptyBottleOfWine") {
             let wineInfoVC = WineInfoVC(nibName: "\(WineInfoVC.self)", bundle: nil)
+            wineInfoVC.setUpImage(image: imageView.image!)
             self.navigationController?.pushViewController(wineInfoVC, animated: true)
         } else {
            

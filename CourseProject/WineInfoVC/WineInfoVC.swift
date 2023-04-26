@@ -26,4 +26,14 @@ final class WineInfoVC: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    func setUpImage(image: UIImage) {
+        getTextFromImage(image: image)
+    }
+    
+    private func getTextFromImage(image: UIImage) {
+        DispatchQueue.main.async {
+            let mlFunction = MLKitService()
+            mlFunction.getText(imageToRecognize: image)
+        }
+    }
 }
