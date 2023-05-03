@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CameraVC: UIViewController, UIImagePickerControllerDelegate , GKImagePickerDelegate, UINavigationControllerDelegate{
+final class CameraVC: UIViewController , GKImagePickerDelegate {
     @IBOutlet private weak var imageView: UIImageView!
     
     private let imagePicker = GKImagePicker()
@@ -19,21 +19,21 @@ final class CameraVC: UIViewController, UIImagePickerControllerDelegate , GKImag
         imagePicker.delegate = self
         imagePicker.resizeableCropArea = true
         imageView.image = UIImage(named: "emptyBottleOfWine")
+        
+        imagePicker.accessibilityFrame = CGRect(x: 0, y: view.frame.height - 30, width: view.frame.width, height: 30.0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        picker.dismiss(animated: true)
-
-        guard let image = info[.editedImage] as? UIImage else {
-            print("No image found")
-            return
-        }
-
-        imageView.image = image
+    func imagePicker(_ imagePicker: GKImagePicker!, pickedImage image: UIImage!) {
+        self.imageView.image = image
+        dismiss(animated: (imagePicker.imagePickerController != nil))
+    }
+    
+    func imagePickerDidCancel(_ imagePicker: GKImagePicker!) {
+        dismiss(animated: (imagePicker.imagePickerController != nil))
     }
     
     @IBAction func getInfoDidTap() {
@@ -53,7 +53,7 @@ final class CameraVC: UIViewController, UIImagePickerControllerDelegate , GKImag
     }
     
     @IBAction func openLibraryDidTap() {
-  
+        present(imagePicker.imagePickerController, animated: true)
 //        vc.sourceType = .photoLibrary
 //        present(vc, animated: true)
     }
