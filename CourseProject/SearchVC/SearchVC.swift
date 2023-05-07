@@ -7,11 +7,13 @@
 
 import UIKit
 
-final class SearchVC: UIViewController ,UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
+final class SearchVC: UIViewController ,UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
     @IBOutlet private weak var collectionView: UICollectionView!
     let arrOfWineTypes: [WineType] = [.red, .white, .sparkling, .rose, .dessert, .port]
     let repoService = RepositoryService()
-let imageService = ImageService()
+    let imageService = ImageService()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self

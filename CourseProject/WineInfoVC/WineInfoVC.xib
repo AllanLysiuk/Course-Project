@@ -10,13 +10,13 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WineInfoVC" customModule="CourseProject" customModuleProvider="target">
             <connections>
-                <outlet property="imageView" destination="jK0-6a-KnX" id="0Q7-Cg-Ebs"/>
-                <outlet property="locationLabel" destination="diO-U8-6jn" id="Djb-Gp-NGY"/>
-                <outlet property="nameLabel" destination="dwG-gY-hBd" id="AGu-Ud-E4L"/>
-                <outlet property="ratingLabel" destination="BCw-Dt-yNf" id="mM8-wy-VsC"/>
-                <outlet property="reviewsLabel" destination="N1o-yZ-EM9" id="shY-5R-fxk"/>
-                <outlet property="view" destination="iN0-l3-epB" id="w2P-Kf-0g4"/>
-                <outlet property="wineryLabel" destination="C2a-4n-yaB" id="qfB-e8-hRQ"/>
+                <outlet property="imageView" destination="jK0-6a-KnX" id="Wgq-KQ-NdX"/>
+                <outlet property="locationLabel" destination="diO-U8-6jn" id="r5b-6V-nvk"/>
+                <outlet property="nameLabel" destination="dwG-gY-hBd" id="684-J4-6RJ"/>
+                <outlet property="ratingLabel" destination="BCw-Dt-yNf" id="YQq-Q3-0nF"/>
+                <outlet property="reviewsLabel" destination="N1o-yZ-EM9" id="Naj-hi-woN"/>
+                <outlet property="view" destination="iN0-l3-epB" id="rTp-13-Zh5"/>
+                <outlet property="wineryLabel" destination="C2a-4n-yaB" id="cQc-jB-hrY"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

@@ -9,7 +9,8 @@ import Foundation
 import UIKit
 final class ImageService{
     func downloadImage(url: URL?) -> UIImage?{
-        let data = try? Data(contentsOf: url!)
+        guard let url = url else { return UIImage(named: "emptyBottleOfWine")}
+        let data = try? Data(contentsOf: url)
         if let data = data{
             return UIImage(data: data)
         }

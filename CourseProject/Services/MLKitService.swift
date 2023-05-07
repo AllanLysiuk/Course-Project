@@ -12,46 +12,51 @@ import MLImage
 
 final class MLKitService {
 
-    func getText(imageToRecognize: UIImage) {
+    func getText(imageToRecognize: UIImage, completion: @escaping (String) -> Void) {
         let latinOptions = TextRecognizerOptions()
         let latinTextRecognizer = TextRecognizer.textRecognizer(options: latinOptions)
         
         let visionImage = VisionImage(image: imageToRecognize)
         visionImage.orientation = imageToRecognize.imageOrientation
-        
-        latinTextRecognizer.process(visionImage) { result, error in
-          guard error == nil, let result = result else {
-              print(error?.localizedDescription)
-            return
-          }
-            let resultText = result.text
-            for block in result.blocks {
-                let blockText = block.text
-                let blockLanguages = block.recognizedLanguages
-                let blockCornerPoints = block.cornerPoints
-                let blockFrame = block.frame
-                for line in block.lines {
-                    let lineText = line.text
-                    let lineLanguages = line.recognizedLanguages
-                    let lineCornerPoints = line.cornerPoints
-                    let lineFrame = line.frame
-                    for element in line.elements {
-                        let elementText = element.text
-                        let elementCornerPoints = element.cornerPoints
-                        let elementFrame = element.frame
-                        print("elementText: \(elementText)")
-                    }
-                    print("lineText: \(lineText)")
-                }
-                print("blockText: \(blockText)")
+        var resultText: String = ""
+       
+        latinTextRecognizer.process(visionImage) { result, error -> Void in
+            guard error == nil, let result = result else {
+                print(error?.localizedDescription)
+                return
             }
+            var blockText: String = ""
+            for block in result.blocks {
+                blockText = block.text
+                print(blockText)
+            }
+            DispatchQueue.main.async {
+                completion(blockText)
+            }
+            
         }
-        
+
     }
-
-
-   
 }
+
+
+
+
+//                for line in block.lines {
+//                    let lineText = line.text
+//                    let lineLanguages = line.recognizedLanguages
+//                    let lineCornerPoints = line.cornerPoints
+//                    let lineFrame = line.frame
+//                    for element in line.elements {
+//                        let elementText = element.text
+//                        let elementCornerPoints = element.cornerPoints
+//                        let elementFrame = element.frame
+//                        print("elementText: \(elementText)")
+//                    }
+//                    print("lineText: \(lineText)")
+//                }
+
+
 
 
 //import AVFoundation
