@@ -8,57 +8,53 @@
 import Foundation
 import UIKit
 
-final class WineInfoVC: UIViewController {
-    @IBOutlet private weak var imageView: UIImageView!
-    @IBOutlet private weak var wineryLabel: UILabel!
-    @IBOutlet private weak var nameLabel: UILabel!
-    @IBOutlet private weak var locationLabel: UILabel!
-    @IBOutlet private weak var ratingLabel: UILabel!
-    @IBOutlet private weak var reviewsLabel: UILabel!
+final class WineInfoVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let repoService = RepositoryService()
-    let imageService = ImageService()
-    var image: UIImage?
+    @IBOutlet private weak var tableView: UITableView!
+    
+    private let imageService = ImageService()
+    private var arrayOfWines: [Wine] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.dataSource = self
+        tableView.delegate = self
+        registerCells()
         self.navigationController?.navigationBar.isHidden = false
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain , target: self, action: #selector(backTapped(_:)))
-        getTextFromImage(image: image!)
-        
+    }
+    
+    private func registerCells(){
+        let nib = UINib(nibName: "\(WineInfoTableViewCell.self)", bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier: "\(WineInfoTableViewCell.self)")
     }
     
     @objc func backTapped(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
     
-    func setUpImage(image: UIImage) {
-        self.image = image
+    func setUpArray(arr: [Wine]) {
+        self.arrayOfWines = arr
     }
     
-    private func getTextFromImage(image: UIImage) {
-        //let queue = DispatchQueue(label: "MLKitServiceQueue", qos: .userInitiated)
-        var recognisedText: String = ""
-
-        let mlFunction = MLKitService()
-        let group = DispatchGroup()
-        group.enter()
-        mlFunction.getText(imageToRecognize: image) { str in
-           recognisedText = str
-            group.leave()
-        }
-        group.notify(queue: .main) {
-        var wines: [Wine] = []
-          wines = self.repoService.loadWineByLetters(name: recognisedText)
-            //wines = self.repoService.loadWineByLetters(name: "KRUG")
-        print(wines)
-        self.nameLabel.text = wines.first?.wine
-        self.ratingLabel.text = "\(wines.first?.averageRating)"
-        self.locationLabel.text = wines.first?.location
-        self.reviewsLabel.text = wines.first?.reviews
-        self.imageView.image = self.imageService.downloadImage(url: wines.first?.image)
-            self.wineryLabel.text = wines.first?.winery
-        }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return arrayOfWines.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "\(WineInfoTableViewCell.self)") as? WineInfoTableViewCell
+        let wine = arrayOfWines[indexPath.row]
+        cell?.nameLabel.text = wine.wine
+        cell?.avgRatingLabel.text = "\(wine.averageRating)"
+        cell?.locationLabel.text = wine.location
+        cell?.reviewsLabel.text = wine.reviews
+        cell?.wineImage.image = imageService.downloadImage(url: wine.image)
+        cell?.wineryLabel.text = wine.winery
+        return cell ?? UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 246
     }
 
 }

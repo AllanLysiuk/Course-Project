@@ -114,6 +114,21 @@ final class RepositoryService{
         fetchRequest = Wine.fetchRequest()
         fetchRequest.returnsObjectsAsFaults = false
         fetchRequest.predicate = NSPredicate(
+            format: "wine CONTAINS[cd] %@", "\(name)"
+        )
+        // Get a reference to a NSManagedObjectContext
+        let context = CoreDataStack.shared.mainContext
+        // Perform the fetch request to get the objects
+        // matching the predicate
+        let wine = try? context.fetch(fetchRequest)
+       return wine ?? []
+       }
+    
+    func loadWineByLettersWinery(name: String) -> [Wine] {
+        let fetchRequest: NSFetchRequest<Wine>
+        fetchRequest = Wine.fetchRequest()
+        fetchRequest.returnsObjectsAsFaults = false
+        fetchRequest.predicate = NSPredicate(
             format: "winery CONTAINS[cd] %@", "\(name)"
         )
         // Get a reference to a NSManagedObjectContext
@@ -123,19 +138,20 @@ final class RepositoryService{
         let wine = try? context.fetch(fetchRequest)
        return wine ?? []
        }
-    func loadWineByName(name: String) -> Wine {
+    
+    func loadWineByName(name: String) -> [Wine] {
         let fetchRequest: NSFetchRequest<Wine>
         fetchRequest = Wine.fetchRequest()
         fetchRequest.returnsObjectsAsFaults = false
         fetchRequest.predicate = NSPredicate(
-            format: "winery == %@", "\(name)"
+            format: "wine == %@", "\(name)"
         )
         // Get a reference to a NSManagedObjectContext
         let context = CoreDataStack.shared.backgroundContext
         // Perform the fetch request to get the objects
         // matching the predicate
-        let wine = try? context.fetch(fetchRequest)
-        return wine?.first ?? Wine()
+        let wine = (try? context.fetch(fetchRequest)) ?? []
+        return wine
        }
     
     func loadWinesByLocation(location: String)/* -> Wine*/ {
@@ -189,9 +205,10 @@ final class RepositoryService{
     
     func addWineToFav(name: String, isFavorite: Bool){
         let wine = self.loadWineByName(name: name)
+       
         let context = CoreDataStack.shared.backgroundContext
         context.perform {
-            wine.isFavorite = isFavorite
+            wine.first?.isFavorite = isFavorite
             CoreDataStack.shared.saveContext(context: context)
         }
     }
@@ -200,7 +217,7 @@ final class RepositoryService{
         
         let context = CoreDataStack.shared.backgroundContext
         context.perform {
-            wine.isSaved = tryLater
+            wine.first?.isSaved = tryLater
             CoreDataStack.shared.saveContext(context: context)
         }
     }

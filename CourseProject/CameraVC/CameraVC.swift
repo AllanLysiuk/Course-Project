@@ -10,12 +10,11 @@ import UIKit
 final class CameraVC: UIViewController , GKImagePickerDelegate {
     @IBOutlet private weak var imageView: UIImageView!
     
+    private let repoService = RepositoryService()
     private let imagePicker = GKImagePicker()
-//    private let vc = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        vc.delegate = self
         imagePicker.delegate = self
         imagePicker.resizeableCropArea = true
         imageView.image = UIImage(named: "emptyBottleOfWine")
@@ -39,12 +38,58 @@ final class CameraVC: UIViewController , GKImagePickerDelegate {
     @IBAction func getInfoDidTap() {
         
         if imageView.image != UIImage(named: "emptyBottleOfWine") {
-            let wineInfoVC = WineInfoVC(nibName: "\(WineInfoVC.self)", bundle: nil)
-            wineInfoVC.setUpImage(image: imageView.image!)
-            self.navigationController?.pushViewController(wineInfoVC, animated: true)
+            var recognisedText: String = ""
+            let mlFunction = MLKitService()
+            let group = DispatchGroup()
+            group.enter()
+            mlFunction.getText(imageToRecognize: imageView.image!) { str in
+               recognisedText = str
+                group.leave()
+            }
+            group.notify(queue: .main) {
+                let alertVC = UIAlertController(title: "Recognised Text: *\(recognisedText)*",
+                                                message: "Is recognised text correct? If it is not try to change crop area of image",
+                                                preferredStyle: .alert)
+                let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+                    let wines = self.getArrayOfWines(text: recognisedText)
+                    if wines.isEmpty {
+                        let alertProblemVC = UIAlertController(title: "Something went wrong",
+                                                        message: "We couldn't find wines with this names. Try to take another photo",
+                                                        preferredStyle: .alert)
+                        let okey = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+                            alertProblemVC.dismiss(animated: true)
+                        })
+                        alertProblemVC.addAction(okey)
+                        self.present(alertProblemVC, animated: true)
+                    } else {
+                        let wineInfoVC = WineInfoVC(nibName: "\(WineInfoVC.self)", bundle: nil)
+                        wineInfoVC.setUpArray(arr: wines)
+                        self.navigationController?.pushViewController(wineInfoVC, animated: true)
+                    }
+                })
+              
+                let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
+                    alertVC.dismiss(animated: true)
+                }
+                alertVC.addAction(ok)
+                alertVC.addAction(cancel)
+                self.present(alertVC, animated: true)
+            }
         } else {
            
         }
+    }
+    
+    private func getArrayOfWines(text: String) -> [Wine] {
+        var wines: [Wine] = []
+        wines = self.repoService.loadWineByLettersWinery(name: text)
+        if wines.isEmpty {
+            wines = self.repoService.loadWineByLetters(name: text)
+        }
+        if wines.isEmpty {
+            wines = self.repoService.loadWineByName(name: text)
+        }
+        return wines
     }
     
     @IBAction func openCameraDidTap() {
