@@ -114,7 +114,7 @@ final class RepositoryService{
         fetchRequest = Wine.fetchRequest()
         fetchRequest.returnsObjectsAsFaults = false
         fetchRequest.predicate = NSPredicate(
-            format: "wine CONTAINS[cd] %@", "\(name)"
+            format: "winery CONTAINS[cd] %@", "\(name)"
         )
         // Get a reference to a NSManagedObjectContext
         let context = CoreDataStack.shared.mainContext
@@ -128,7 +128,7 @@ final class RepositoryService{
         fetchRequest = Wine.fetchRequest()
         fetchRequest.returnsObjectsAsFaults = false
         fetchRequest.predicate = NSPredicate(
-            format: "wine == %@", "\(name)"
+            format: "winery == %@", "\(name)"
         )
         // Get a reference to a NSManagedObjectContext
         let context = CoreDataStack.shared.backgroundContext

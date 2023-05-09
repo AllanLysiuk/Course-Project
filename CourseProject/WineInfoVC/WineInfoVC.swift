@@ -39,21 +39,26 @@ final class WineInfoVC: UIViewController {
     private func getTextFromImage(image: UIImage) {
         //let queue = DispatchQueue(label: "MLKitServiceQueue", qos: .userInitiated)
         var recognisedText: String = ""
-      
+
         let mlFunction = MLKitService()
+        let group = DispatchGroup()
+        group.enter()
         mlFunction.getText(imageToRecognize: image) { str in
            recognisedText = str
+            group.leave()
         }
-        
+        group.notify(queue: .main) {
         var wines: [Wine] = []
-        wines = self.repoService.loadWineByLetters(name: recognisedText)
+          wines = self.repoService.loadWineByLetters(name: recognisedText)
+            //wines = self.repoService.loadWineByLetters(name: "KRUG")
         print(wines)
         self.nameLabel.text = wines.first?.wine
         self.ratingLabel.text = "\(wines.first?.averageRating)"
         self.locationLabel.text = wines.first?.location
         self.reviewsLabel.text = wines.first?.reviews
         self.imageView.image = self.imageService.downloadImage(url: wines.first?.image)
-        self.wineryLabel.text = wines.first?.winery
+            self.wineryLabel.text = wines.first?.winery
+        }
     }
 
 }
